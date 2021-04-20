@@ -51,3 +51,8 @@ GLOBAL OPTIONS:
    --help, -h                show help (default: false)
 ```
 
+such as run:
+
+```shell
+./azr-replace -s test.txt -e v3="values from -e" -o replaced.txt
+```
