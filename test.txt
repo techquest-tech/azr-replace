@@ -1,0 +1,7 @@
+#{ replaceA }# -- should be Hello World
+#{ replaceB }# -- value with empty space.
+---
+#{ value not existed }# -- should be empty
+---
+#{v3}# -- values in env or -e v3=value
+end of file
