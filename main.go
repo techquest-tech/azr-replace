@@ -1,9 +1,9 @@
 package main
 
 import (
+	"log"
 	"os"
 
-	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 )
 
@@ -35,12 +35,12 @@ func main() {
 				Aliases: []string{"o"},
 				Usage:   "output to file or default - to STDOUT",
 			},
-			&cli.StringFlag{
-				Name:    "log",
-				Aliases: []string{"l"},
-				EnvVars: []string{"LOG_LEVEL"},
-				Value:   "info",
-			},
+			// &cli.StringFlag{
+			// 	Name:    "log",
+			// 	Aliases: []string{"l"},
+			// 	EnvVars: []string{"LOG_LEVEL"},
+			// 	Value:   "info",
+			// },
 			&cli.StringFlag{
 				Name:  "start",
 				Value: "#{",
@@ -50,20 +50,21 @@ func main() {
 				Value: "}#",
 			},
 		},
-		Before: initApp,
+		// Before: initApp,
 		Action: fire,
 	}
 	err := app.Run(os.Args)
 	if err != nil {
-		logrus.WithField("err", err).Fatalf("task failed. %s", err)
+		// logrus.WithField("err", err).Fatalf("task failed. %s", err)
+		log.Fatal("job failed, ", err)
 	}
 }
 
-func initApp(c *cli.Context) error {
-	log := c.String("log")
-	level, _ := logrus.ParseLevel(log)
-	logrus.SetLevel(level)
-	logrus.SetOutput(os.Stdout)
+// func initApp(c *cli.Context) error {
+// 	log := c.String("log")
+// 	level, _ := logrus.ParseLevel(log)
+// 	logrus.SetLevel(level)
+// 	logrus.SetOutput(os.Stdout)
 
-	return nil
-}
+// 	return nil
+// }
