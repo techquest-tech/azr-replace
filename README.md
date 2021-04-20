@@ -15,6 +15,8 @@ go build .
 
 ```
 
+or download binary from release
+
 ## Run
 
 check details by
